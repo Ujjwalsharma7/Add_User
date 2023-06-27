@@ -4,7 +4,7 @@ import Card from '../UI/Card';
 import Button from '../UI/Button';
 import { useState } from 'react';
 
-function AddUser() {
+function AddUser(props) {
     const [enteredUsername, setEnteredUsername] = useState('');
     const [enteredAge, setEnteredAge] = useState('');
     const submitHandler = (event) => {
@@ -15,7 +15,7 @@ function AddUser() {
        if(+enteredAge < 1){
         return;
        }
-      console.log(enteredAge , enteredUsername)
+       props.onAddUser(enteredUsername, enteredAge);
        setEnteredAge('');
        setEnteredUsername('');
     }

@@ -4,12 +4,14 @@ import classes from './UserList.module.css'
 
 function UserList(props) {
   return (
-    <Card classNmae = {classes.users}>
-
+    <Card className = {classes.users}>
   <ul>
-    {props.users.map(user => {
-        <li>{user.name} ({user.age} years old)</li>
-    })}
+    {props.users.map((user) => {
+      return(
+        <li>
+          {user.name} ({user.age} years old)
+          </li>
+    )})}
   </ul>
     </Card>
     )
