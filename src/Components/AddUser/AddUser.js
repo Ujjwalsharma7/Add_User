@@ -9,6 +9,9 @@ function AddUser() {
     const [enteredAge, setEnteredAge] = useState('');
     const submitHandler = (event) => {
        event.preventDefault();
+      console.log(enteredAge , enteredUsername)
+       setEnteredAge('');
+       setEnteredUsername('');
     }
 
     const usernameChangeHandler = (event) => {
