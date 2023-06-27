@@ -4,7 +4,9 @@ import Button from './Button'
 import classes from './ErrorModal.module.css'
 function ErrorModal(props) {
   return (
- <Card classname={classes.modal}>
+    <div>
+<div className={classes.backdrop} />
+ <Card className={classes.modal}>
      <header className={classes.header}>
         <h2>{props.title}</h2>
      </header>
@@ -15,6 +17,7 @@ function ErrorModal(props) {
 <Button>Okay</Button>
      </footer>
  </Card>
+    </div>
   )
 }
 
