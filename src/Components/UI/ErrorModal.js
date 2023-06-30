@@ -10,7 +10,9 @@ const Backdrop = (props) => {
    )
 }
 const ModalOverlay = (props) => {
-   <Card className={classes.modal}>
+   return (
+
+      <Card className={classes.modal}>
    <header className={classes.header}>
       <h2>{props.title}</h2>
    </header>
@@ -21,6 +23,7 @@ const ModalOverlay = (props) => {
 <Button onClick={props.onConfirm}>Okay</Button>
    </footer>
 </Card>
+      )
 }
 
 function ErrorModal(props) {
