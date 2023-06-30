@@ -2,10 +2,12 @@ import React from 'react'
 import classes from './AddUser.module.css'
 import Card from '../UI/Card';
 import Button from '../UI/Button';
-import { useState } from 'react';
+import { useState,useRef } from 'react';
 import ErrorModal  from '../UI/ErrorModal';
 
 function AddUser(props) {
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
     const [enteredUsername, setEnteredUsername] = useState('');
     const [enteredAge, setEnteredAge] = useState('');
     const [error, setError] = useState('');
@@ -46,9 +48,9 @@ function AddUser(props) {
     <Card className={classes.input}>
    <form onSubmit={submitHandler} className='form'>
     <label htmlFor='Username'>Username</label>
-    <input type='text' id='name' placeholder='name' onChange={usernameChangeHandler} value={enteredUsername}></input>
+    <input type='text' id='name' placeholder='name' onChange={usernameChangeHandler} value={enteredUsername} ref={nameInputRef}></input>
     <label htmlFor='age'>Age (In years)</label>
-    <input type='number' id='age' placeholder='age' onChange={ageChangeHandler} value={enteredAge}></input>
+    <input type='number' id='age' placeholder='age' onChange={ageChangeHandler} value={enteredAge} ref={ageInputRef}></input>
     <Button type='submit'>
       Add User
     </Button>
