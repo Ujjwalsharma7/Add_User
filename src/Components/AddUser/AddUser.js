@@ -8,37 +8,32 @@ import ErrorModal  from '../UI/ErrorModal';
 function AddUser(props) {
   const nameInputRef = useRef();
   const ageInputRef = useRef();
-    const [enteredUsername, setEnteredUsername] = useState('');
-    const [enteredAge, setEnteredAge] = useState('');
+
+   
     const [error, setError] = useState('');
     const submitHandler = (event) => {
        event.preventDefault();
-       if(enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
+       const enteredName = nameInputRef.current.value;
+       const enteredUserAge = ageInputRef.current.value;
+       if(enteredName.trim().length === 0 || enteredUserAge.trim().length === 0) {
        setError({
         title: 'Invalid Input',
         message: 'Please enter a valid name and age(non-empty values)'
        })
        return;
        }
-       if(+enteredAge < 1){
+       if(+enteredUserAge < 1){
        setError({
         title:'Invalid age',
         message:'Please enter valid age (>0)'
        })
        return;
        }
-       props.onAddUser(enteredUsername, enteredAge);
-       setEnteredAge('');
-       setEnteredUsername('');
+       props.onAddUser(enteredName, enteredUserAge);
+     
     }
 
-    const usernameChangeHandler = (event) => {
-      setEnteredUsername(event.target.value)
-    }
-
-    const ageChangeHandler = (event) => {
-      setEnteredAge(event.target.value)
-    }
+   
     const errorHandler = () => {
       setError('');
     }
@@ -48,9 +43,9 @@ function AddUser(props) {
     <Card className={classes.input}>
    <form onSubmit={submitHandler} className='form'>
     <label htmlFor='Username'>Username</label>
-    <input type='text' id='name' placeholder='name' onChange={usernameChangeHandler} value={enteredUsername} ref={nameInputRef}></input>
+    <input type='text' id='name' placeholder='name'  ref={nameInputRef}></input>
     <label htmlFor='age'>Age (In years)</label>
-    <input type='number' id='age' placeholder='age' onChange={ageChangeHandler} value={enteredAge} ref={ageInputRef}></input>
+    <input type='number' id='age' placeholder='age' ref={ageInputRef}></input>
     <Button type='submit'>
       Add User
     </Button>
